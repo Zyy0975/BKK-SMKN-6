@@ -16,7 +16,9 @@
 
     <string name="detail_lowongan">Detail Lowongan</string>
     <string name="detail_berita">Detail Berita</string>
-    <string name="detail_perusahaan">Detail Perusahan</string>
-
-
+    <string name="detail_perusahaan">Detail Perusahaan</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="lowongan_dibuka">Lowongan yang dibuka</string>
+    <string name="lamar_lewat_bkk">Lamar lewat BKK</string>
+    <string name="link_gagal">Tidak dapat membuka tautan.</string>
 </resources>
