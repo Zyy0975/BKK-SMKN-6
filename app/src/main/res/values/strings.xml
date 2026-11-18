@@ -1,3 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-    <string name="app_name">BKK SMKN 6</string>
+    <string name="app_name">BKK SMKN 6 Surakarta</string>
+    <string name="logo_desc">Logo BKK SMK Negeri 6 Surakarta</string>
+
+    <string name="nav_lowongan">Lowongan</string>
+    <string name="nav_berita">Berita</string>
+    <string name="nav_perusahaan">Perusahaan</string>
+
+    <string name="cari_lowongan">Cari Lowongan</string>
+    <string name="cari_berita">Berita</string>
+    <string name="cari_perusahaan">Perusahaan</string>
+
+    <string name="data_kosong">Data tidak ditemukan.</string>
+    <string name="coba_lagi">Coba Lagi</string>
+
+    <string name="detail_lowongan">Detail Lowongan</string>
+    <string name="detail_berita">Detail Berita</string>
+    <string name="detail_perusahaan">Detail Perusahan</string>
+
+
 </resources>
