@@ -19,11 +19,17 @@ object ApiError {
             401 -> "Kunci API Tidak Valid Atau Sudah Dinonaktifkan."
             404 -> "Data Tidak Ditemukan."
             429 -> "Terlalu Banyak Permintaan, Tunggu Sebentar Lalu Coba Lagi."
-            else -> "Terjadi Kesalahan Di Server (kode ${e.message}"
+            else -> "Terjadi Kesalahan Di Server (kode ${e.code()})"
         }
+
+        is IOException -> "Tidak ada koneksi interent."
+        else -> "Terjadi kesalahan: ${e.message}"
     }
+}
 
     private val localeId = Locale("id", "ID")
+
+/** "2026-10-14T07:44:00+07:00" atau "2026-11-04" -> "14 Okt 2026" */
     fun String?.tanggalIndo(): String? {
         if (this.isNullOrBlank()) return null
         val fmt = DateTimeFormatter.ofPattern("d MMM yyyy", localeId)
@@ -33,10 +39,41 @@ object ApiError {
             this
         }
     }
+
+fun ImageView.loadImage(url: String?) {
+    if (url.isNullOrBlank()) {
+        setImageResource(R.drawable.bg_placeholder)
+    } else {
+        load(url) {
+            crossfade(true)
+            placeholder(R.drawable.bg_placeholder)
+            error(R.drawable.bg_placeholder)
+        }
+    }
 }
 
-fun ImageView.loadImage(url: String?){
-    if (url.isNullOrBlank()){
+fun TextView.setTextOrHide(value: String?) {
+    if (value.isNullOrBlank()) {
+        visibility = android.view.View.GONE
+    } else {
+        visibility = android.view.View.VISIBLE
+        text = value
+    }
+}
 
+fun TextView.setRichText(html: String?, plain: String?) {
+    when {
+        !html.isNullOrBlank() -> {
+            visibility = android.view.View.VISIBLE
+            text = HtmlCompat.fromHtml(html, HtmlCompat.FROM_HTML_MODE_COMPACT).trimEnd()
+            movementMethod = LinkMovementMethod.getInstance()
         }
+
+        !plain.isNullOrBlank() -> {
+            visibility = android.view.View.VISIBLE
+            text = plain.trim()
+        }
+
+        else -> visibility = android.view.View.GONE
+    }
 }

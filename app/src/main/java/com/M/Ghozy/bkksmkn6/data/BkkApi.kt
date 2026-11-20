@@ -56,7 +56,7 @@ object ApiClient {
         }
         .build()
     val api: BkkApi = Retrofit.Builder()
-        .baseUrl("https://bkk.smkn6solo.sch.id/api/v1")
+        .baseUrl("https://bkk.smkn6solo.sch.id/api/v1/")
         .client(http)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
