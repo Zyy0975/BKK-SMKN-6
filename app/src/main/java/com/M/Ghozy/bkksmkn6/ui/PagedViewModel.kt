@@ -95,8 +95,23 @@ abstract class PagedViewModel<T> : ViewModel() {
 private fun String?.orNullIfBlank(): String? = this?.trim()?.takeIf { it.isNotEmpty() }
 
 class JobsViewModel : PagedViewModel<Lowongan>() {
+    var location: String? = null
+    var field: String? = null
+
     override suspend fun fetch(page: Int, perPage: Int) =
-        ApiClient.api.jobs(page, perPage, query.orNullIfBlank(), type.orNullIfBlank())
+        ApiClient.api.jobs(page, perPage, query.orNullIfBlank(), type.orNullIfBlank(), location = location.orNullIfBlank(), field = field.orNullIfBlank())
+    fun updateFilters(
+        query: String? = this.query,
+        type: String? = this.type,
+        location: String? = this.location,
+        field: String? = this.field
+    ){
+        this.query = query
+        this.type = type
+        this.location = location
+        this.field = field
+        refresh(clear = true)
+    }
 }
 
 class NewsViewModel : PagedViewModel<Berita>() {

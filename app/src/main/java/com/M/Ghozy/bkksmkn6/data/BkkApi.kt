@@ -16,6 +16,8 @@ interface  BkkApi {
         @Query("per_page") perPage: Int = 10,
         @Query("q") q: String? = null,
         @Query("type") type: String? = null,
+        @Query("location") location: String? = null,
+        @Query("field") field: String? = null,
     ): ListResponse<Lowongan>
 
     @GET("jobs/{id}")
